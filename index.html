@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <nav id="navbar">
+      <a href="./index.html">weatherApp</a>
+      <!-- Dark Mode Toggler -->
+      <div>
+        <input type="checkbox" class="checkbox" id="checkbox" />
+        <label for="checkbox" class="label">
+          <i class="fas fa-sun"></i>
+          <i class="fas fa-moon"></i>
+          <div class="ball"></div>
+        </label>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="search-box">
+        <h1>Daily Weather Information</h1>
+
+        <div class="cities">
+          <h6>Popular Cities:</h6>
+          <div class="city">
+            <button class="city-btn">Istanbul</button>
+            <button class="city-btn">Ankara</button>
+            <button class="city-btn">Izmir</button>
+            <button class="city-btn">New York</button>
+            <button class="city-btn">Amsterdam</button>
+          </div>
+        </div>
+
+        <form class="form" id="form">
+          <input
+            type="text"
+            class="input"
+            id="input"
+            placeholder="Search City"
+            autocomplete="off"
+          />
+          <i class="fas fa-search"></i>
+        </form>
+
+        <div id="city-list" class="city-list"></div>
+      </div>
+
+      <main class="card" id="main"></main>
+
+      <h2 class="weekly-title">Weekly Weather Forecast</h2>
+      <div class="weekly-container">
+        <div class="card-weekly">
+          <h5>Saturday</h5>
+          <h6>28.12.19</h6>
+          <img
+            src="https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0017_cloudy_with_light_rain.png"
+            alt="weather-icon"
+          />
+          <h3>15°C</h3>
+        </div>
+        <div class="card-weekly">
+          <h5>Saturday</h5>
+          <h6>28.12.19</h6>
+          <img
+            src="https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0017_cloudy_with_light_rain.png"
+            alt="weather-icon"
+          />
+          <h3>15°C</h3>
+        </div>
+        <div class="card-weekly">
+          <h5>Saturday</h5>
+          <h6>28.12.19</h6>
+          <img
+            src="https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0017_cloudy_with_light_rain.png"
+            alt="weather-icon"
+          />
+          <h3>15°C</h3>
+        </div>
+        <div class="card-weekly">
+          <h5>Saturday</h5>
+          <h6>28.12.19</h6>
+          <img
+            src="https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0017_cloudy_with_light_rain.png"
+            alt="weather-icon"
+          />
+          <h3>15°C</h3>
+        </div>
+        <div class="card-weekly">
+          <h5>Saturday</h5>
+          <h6>28.12.19</h6>
+          <img
+            src="https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0017_cloudy_with_light_rain.png"
+            alt="weather-icon"
+          />
+          <h3>15°C</h3>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
