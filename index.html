@@ -3,10 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="upgrade-insecure-requests"
-    />
     <title>Weather App</title>
     <link
       rel="stylesheet"
@@ -19,7 +15,11 @@
   </head>
   <body>
     <nav id="navbar">
-      <a href="./index.html">weatherApp</a>
+      <div class="logo">
+        <i class="fas fa-cloud-sun-rain"></i>
+        <a href="./index.html">weatherApp</a>
+      </div>
+
       <!-- Dark Mode Toggler -->
       <div>
         <input type="checkbox" class="checkbox" id="checkbox" />
@@ -35,14 +35,20 @@
       <div class="search-box">
         <h1>Daily Weather Information</h1>
 
-        <div class="cities">
-          <h6>Popular Cities:</h6>
-          <div class="city">
-            <button class="city-btn">Istanbul</button>
-            <button class="city-btn">Ankara</button>
-            <button class="city-btn">Izmir</button>
-            <button class="city-btn">New York</button>
-            <button class="city-btn">Amsterdam</button>
+        <!-- Popular/ Favorite Cities -->
+        <div class="pop-fav-cities">
+          <div class="pop-cities">
+            <h6>Popular Cities:</h6>
+            <div class="pop-city">
+              <button class="city-btn">Istanbul</button>
+              <button class="city-btn">Ankara</button>
+              <button class="city-btn">Izmir</button>
+              <button class="city-btn">New York</button>
+              <button class="city-btn">Amsterdam</button>
+            </div>
+          </div>
+          <div class="fav-cities" id="fav-cities">
+            <h6>Favorite Cities:</h6>
           </div>
         </div>
 
@@ -56,6 +62,11 @@
           />
           <i class="fas fa-search"></i>
         </form>
+        <small
+          >Note: Autocomplete only shows cities and villages of country Turkey.
+          If you want to see weather of any other city in the world, you should
+          write full name of it in the search box</small
+        >
 
         <div id="city-list" class="city-list"></div>
       </div>
