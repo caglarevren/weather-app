@@ -1,4 +1,4 @@
-const APIKEY = 'b950d81051f4b3509b239c9b96a7e35f';
+const APIKEY = '0ca88a488c3a638511497df737bbae5b';
 const APIURL = (city) =>
   `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}`;
 const APIURLID = (id) =>
@@ -16,6 +16,7 @@ const favCities = document.getElementById('fav-cities');
 getWeather('Antalya');
 fetchFavCities();
 
+//
 async function getWeather(city) {
   const resp = await fetch(APIURL(city), { origin: 'cors' });
   const respData = await resp.json();
@@ -23,6 +24,15 @@ async function getWeather(city) {
   console.log(respData);
 
   createWeatherCard(respData);
+
+  const humidity = respData.main.humidity;
+  getHumidity(humidity);
+
+  const pressure = respData.main.pressure;
+  getPressure(pressure);
+
+  const wind = respData.wind.speed;
+  getWind(wind);
 }
 
 async function getWeatherById(id) {
@@ -34,11 +44,47 @@ async function getWeatherById(id) {
   return city;
 }
 
+// Enable DarkMode
+function chooseDarkMode() {
+  document.body.classList.add('black');
+  document.body.classList.remove('white');
+
+  navbar.classList.add('white');
+  navbar.classList.remove('black');
+}
+
+// Disable DarkMode
+function chooseLightMode() {
+  document.body.classList.add('white');
+  document.body.classList.remove('black');
+
+  navbar.classList.add('black');
+  navbar.classList.remove('white');
+}
+
 // Dark Mode Toggler
-checkbox.addEventListener('change', () => {
-  document.body.classList.toggle('white');
-  navbar.classList.toggle('black');
+checkbox.addEventListener('change', (e) => {
+  if (e.target.checked) {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
+    chooseLightMode();
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+    chooseDarkMode();
+  }
 });
+
+// Getting DarkMode From LocalStorage
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme) {
+  document.documentElement.setAttribute('data-theme', currentTheme);
+
+  if (currentTheme === 'light') {
+    checkbox.checked = true;
+    chooseLightMode();
+  }
+}
 
 //Show Weather of Popular Cities in Weather Card
 cityBtn.forEach((city) => {
@@ -134,6 +180,10 @@ function createWeatherCard(data) {
       addCitiesLS(data.id);
       btn.classList.add('active');
     }
+
+    // Clean the container
+    favCities.innerHTML = '';
+    fetchFavCities();
   });
 }
 
@@ -190,7 +240,7 @@ function getCitiesLS() {
   return cityIds === null ? [] : cityIds;
 }
 
-// Fetching Favourite City
+// Fetching Favorite City
 async function fetchFavCities() {
   const cityIds = getCitiesLS();
 
@@ -220,5 +270,125 @@ function addCityToFavContainer(city) {
       const favCityText = city.innerText;
       getWeather(favCityText);
     });
+  });
+}
+
+// Getting Humidity
+getHumidity();
+
+function getHumidity(obj) {
+  const humidityChart = document.getElementById('humidity').getContext('2d');
+
+  const chart = new Chart(humidityChart, {
+    type: 'doughnut',
+
+    data: {
+      labels: ['Humidity', 'Empty'],
+      datasets: [
+        {
+          label: '# of Votes',
+          data: [obj, 100 - obj],
+          backgroundColor: ['rgba(171, 0, 60, 0.8)', 'rgba(0,0,0, 0.1)'],
+          borderColor: ['rgba(113, 128, 150, 1)', 'rgba(113, 128, 150, 1)'],
+          borderWidth: 1,
+        },
+      ],
+    },
+
+    options: {
+      title: {
+        display: true,
+        text: `Humidity ${obj}%`,
+        fontSize: 25,
+        fontColor: '#718096',
+      },
+      legend: {
+        display: true,
+        position: 'top',
+        labels: {
+          fontColor: '#718096',
+        },
+      },
+    },
+  });
+}
+
+// Getting Pressure
+getPressure();
+
+function getPressure(obj) {
+  const pressureChart = document.getElementById('pressure').getContext('2d');
+
+  const chart = new Chart(pressureChart, {
+    type: 'bar',
+
+    data: {
+      labels: ['Pressure'],
+      datasets: [
+        {
+          label: 'Pressure',
+          data: [obj],
+          backgroundColor: ['rgba(171, 0, 60, 0.8)'],
+          borderColor: ['rgba(113, 128, 150, 1)'],
+          borderWidth: 1,
+        },
+      ],
+    },
+
+    options: {
+      title: {
+        display: true,
+        text: `Pressure ${obj}Pa`,
+        fontSize: 25,
+        fontColor: '#718096',
+      },
+      legend: {
+        display: true,
+        position: 'top',
+        labels: {
+          fontColor: '#718096',
+        },
+      },
+    },
+  });
+}
+
+// Getting Wind
+getWind();
+
+function getWind(obj) {
+  const windChart = document.getElementById('wind').getContext('2d');
+
+  const chart = new Chart(windChart, {
+    type: 'bar',
+
+    data: {
+      labels: ['Wind'],
+      datasets: [
+        {
+          label: 'Wind Speed',
+          data: [obj],
+          backgroundColor: ['rgba(171, 0, 60, 0.8)'],
+          borderColor: ['rgba(113, 128, 150, 1)'],
+          borderWidth: 1,
+        },
+      ],
+    },
+
+    options: {
+      title: {
+        display: true,
+        text: `Wind ${obj}km/s`,
+        fontSize: 25,
+        fontColor: '#718096',
+      },
+      legend: {
+        display: true,
+        position: 'top',
+        labels: {
+          fontColor: '#718096',
+        },
+      },
+    },
   });
 }

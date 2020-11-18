@@ -16,7 +16,12 @@ body {
 
 body.white {
   background-color: #fafafa;
-  color: #111;
+  color: #292c35;
+}
+
+body.black {
+  background-color: #292c35;
+  color: #fafafa;
 }
 
 .container {
@@ -37,6 +42,11 @@ nav {
 nav.black {
   background-color: #292c35;
   color: #fafafa;
+}
+
+nav.white {
+  background-color: #fafafa;
+  color: #292c35;
 }
 
 nav a {
@@ -124,7 +134,8 @@ nav a {
 }
 
 .city-btn {
-  background-color: #ef5350;
+  background-color: #ab003c;
+  color: #fafafa;
   font-weight: bold;
   margin-left: 1rem;
   padding: 0.5rem;
@@ -187,7 +198,6 @@ nav a {
 /* Card */
 .card {
   position: relative;
-  background-color: fafafa;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
   display: flex;
   margin-top: 2rem;
@@ -262,4 +272,18 @@ small {
 
 .card-weekly h3 {
   margin-top: 0.5rem;
+}
+
+.chart-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.chart-card {
+  width: 300px;
+  height: 300px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  margin-top: 2rem;
 }

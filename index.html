@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
@@ -11,16 +12,21 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+      defer
+    ></script>
     <script src="./app.js" defer></script>
   </head>
   <body>
+    <!-- ============ Navigation Bar Start ============= -->
     <nav id="navbar">
       <div class="logo">
         <i class="fas fa-cloud-sun-rain"></i>
         <a href="./index.html">weatherApp</a>
       </div>
 
-      <!-- Dark Mode Toggler -->
+      <!-- ============= DarkMode Toggler Start============== -->
       <div>
         <input type="checkbox" class="checkbox" id="checkbox" />
         <label for="checkbox" class="label">
@@ -29,13 +35,16 @@
           <div class="ball"></div>
         </label>
       </div>
+      <!-- ============= DarkMode Toggler End ============== -->
     </nav>
+    <!-- ============ Navigation Bar End ============= -->
 
     <div class="container">
+      <!-- ============ Main Weather Section Starts ============= -->
       <div class="search-box">
         <h1>Daily Weather Information</h1>
 
-        <!-- Popular/ Favorite Cities -->
+        <!-- ============ Popular/ Favorite Cities Start ============= -->
         <div class="pop-fav-cities">
           <div class="pop-cities">
             <h6>Popular Cities:</h6>
@@ -51,7 +60,9 @@
             <h6>Favorite Cities:</h6>
           </div>
         </div>
+        <!-- ============ Popular/ Favorite Cities End ============= -->
 
+        <!-- ============ Search Box Start ============= -->
         <form class="form" id="form">
           <input
             type="text"
@@ -67,58 +78,29 @@
           If you want to see weather of any other city in the world, you should
           write full name of it in the search box</small
         >
-
         <div id="city-list" class="city-list"></div>
       </div>
+      <!-- ============ Search Box End ============= -->
 
       <main class="card" id="main"></main>
+      <!-- ============ Main Weather Section Ends ============= -->
 
-      <h2 class="weekly-title">Weekly Weather Forecast</h2>
-      <div class="weekly-container">
-        <div class="card-weekly">
-          <h5>Saturday</h5>
-          <h6>28.12.19</h6>
-          <img
-            src="https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0017_cloudy_with_light_rain.png"
-            alt="weather-icon"
-          />
-          <h3>15°C</h3>
+      <!-- ============ Charts Starts ============= -->
+      <div class="chart-cards">
+        <div class="chart-card">
+          <div>
+            <canvas id="humidity" width="400" height="350"></canvas>
+          </div>
         </div>
-        <div class="card-weekly">
-          <h5>Saturday</h5>
-          <h6>28.12.19</h6>
-          <img
-            src="https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0017_cloudy_with_light_rain.png"
-            alt="weather-icon"
-          />
-          <h3>15°C</h3>
+        <div class="chart-card">
+          <div>
+            <canvas id="pressure" width="400" height="350"></canvas>
+          </div>
         </div>
-        <div class="card-weekly">
-          <h5>Saturday</h5>
-          <h6>28.12.19</h6>
-          <img
-            src="https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0017_cloudy_with_light_rain.png"
-            alt="weather-icon"
-          />
-          <h3>15°C</h3>
-        </div>
-        <div class="card-weekly">
-          <h5>Saturday</h5>
-          <h6>28.12.19</h6>
-          <img
-            src="https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0017_cloudy_with_light_rain.png"
-            alt="weather-icon"
-          />
-          <h3>15°C</h3>
-        </div>
-        <div class="card-weekly">
-          <h5>Saturday</h5>
-          <h6>28.12.19</h6>
-          <img
-            src="https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0017_cloudy_with_light_rain.png"
-            alt="weather-icon"
-          />
-          <h3>15°C</h3>
+        <div class="chart-card">
+          <div>
+            <canvas id="wind" width="400" height="350"></canvas>
+          </div>
         </div>
       </div>
     </div>
