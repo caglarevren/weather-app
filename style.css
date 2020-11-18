@@ -195,7 +195,7 @@ nav a {
   margin-bottom: 5rem;
 }
 
-/* Card */
+/************* Card *************/
 .card {
   position: relative;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
@@ -247,33 +247,7 @@ small {
   color: #999;
 }
 
-/* Weakly Weather Forescast */
-.weekly-title {
-  margin: 2rem 0 1.5rem 0;
-}
-
-.weekly-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.card-weekly {
-  background-color: fafafa;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 3rem 4rem;
-}
-
-.card-weekly h6 {
-  margin-bottom: 0.5rem;
-}
-
-.card-weekly h3 {
-  margin-top: 0.5rem;
-}
-
+/************* Charts *************/
 .chart-cards {
   display: flex;
   flex-wrap: wrap;
@@ -286,4 +260,64 @@ small {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
   padding: 1rem;
   margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .pop-fav-cities {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .fav-cities {
+    margin-top: 1rem;
+  }
+
+  .card-info {
+    margin-left: 1rem;
+  }
+
+  .card-info-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .fav-btn {
+    font-size: 1rem;
+  }
+
+  .chart-cards {
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .search-box {
+    padding: 1.5rem;
+  }
+
+  .search-box h1 {
+    text-align: center;
+  }
+
+  .city-btn {
+    margin-top: 0.3rem;
+  }
+
+  .card {
+    margin: 2rem;
+  }
+
+  .fav-btn {
+    font-size: 1.2rem;
+  }
+
+  .favorites small {
+    display: none;
+  }
+
+  .chart-cards {
+    justify-content: space-evenly;
+    margin-bottom: 1.5rem;
+  }
 }

@@ -16,12 +16,9 @@ const favCities = document.getElementById('fav-cities');
 getWeather('Antalya');
 fetchFavCities();
 
-//
 async function getWeather(city) {
   const resp = await fetch(APIURL(city), { origin: 'cors' });
   const respData = await resp.json();
-
-  console.log(respData);
 
   createWeatherCard(respData);
 
@@ -147,7 +144,7 @@ function createWeatherCard(data) {
   const temp = KtoC(data.main.temp);
 
   const cardHTML = `
-    <img
+      <img
          src='https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png'
          class='card-img'
        />
